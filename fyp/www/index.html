@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+  <title>Network Scanner</title>
+
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+
+  <!-- CSS Files -->
+  <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/lib/aos/aos.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+  <section id="hero"> 
+    
+    <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
+      <h1>Network Vulnerabilities and Exposures Scanner</h1>
+      <h2>Proceed to scan your network to find any vulnerabilities or exposures present on your network</h2>
+      <a href="#tabing" class="btn-get-started" onclick="clearfields(), Pleasewait1(), eel.networkscan('192.168.1.0')">Scan My Network</a>
+    </div>
+  </section>
+
+  <main class="main">
+ 
+    <section id="tabing">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h3 class="section-title">Common Vulnerabilities & Exposures Scanner</h3>
+          <p class="section-description">This program was made to detect CVE'S(Common Vulnerabilities and Exposures) and give solutions to the user </p>
+        </div>
+        <div class="row">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <div class="card text-center mt-3 tab-card" data-aos="zoom-in">
+                  <div class="card-header tab-card-header">
+                    <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="One" aria-selected="true"><i class="fa fa-desktop"></i> Network Map</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="Two" aria-selected="false"><i class="fa fa-bar-chart"></i> Device Scan</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="three-tab" data-toggle="tab" href="#three" role="tab" aria-controls="Three" aria-selected="false"><i class="fa fa-info-circle"></i> Vulnerability Info</a>
+                      </li>
+                    </ul>
+                  </div>
+          
+                  <div class="tab-content" id="myTabContent">
+                    <p class="description"><div class="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
+                      <h5 class="card-title" id="Titletab1">Network Map</h5>
+                      <p class="card-text text-center overflow-auto" id="Desctab1" style="margin: 30px 0px;">
+                        This table will show the list of devices connected to your network. To begin the scan. Please scroll back up and click 'Scan my network'
+                      </p>
+                      <p class="card-text">
+                        <table class="table table-bordered table-striped">
+                          <thead>
+                            <tr>
+                              <th>Device IP</th>
+                              <th>Device Name</th>
+                            </tr>
+                          </thead>
+                          <tbody id='tableData'>
+                           
+                          </tbody>
+                        </table>
+                      </p>              
+                    </div></p>
+                    <p class="description"><div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
+                      <h5 class="card-title">Choose Scan Type</h5>
+                      <div class="container row">
+                          <div class="col-md-6">
+                            <select class="dropdown dropdown-toggle" id='device-selector' name="device">
+                              <option class="dropdown-item" value="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Device</option>
+                            </select>
+                          </div>
+                        
+                        <div class="col-md-6">
+                          <select class="dropdown dropdown-toggle" id='port-selector' name="port">
+                          <option class="dropdown-item" type="button" value="all" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="all">Select Port(Optional)</option>
+                              
+                          </select>
+
+                          
+                        </div> 
+                      </div><!--text-align:left!important;    to move text to left side-->
+                      <div id="result" style="margin-left:auto; margin-right:auto; width:900px; height: 400px;text-align: left !important; overflow-y: scroll;">
+                      <p class="card-text text-center overflow-auto" style="margin: 30px 0px;">
+                        This area will be used to display the results of your scan. Please Choose the Device and Preferred Port(Optional) and Click the button at the bottom of the Page. Please Note this scan may take up to 5 minutes
+                      </p>
+                    </div>
+                      <a class="btn btn-dark" id= 'btn' onclick= "clearfield('result'),clearfield('miti'), Pleasewait2(), eel.devicescan(chosenDevice, $('#port-selector :selected').val())">Start Device scan</a>       
+                    </div></p>
+                    <p class="description"><div class="tab-pane fade p-3" id="three" role="tabpanel" aria-labelledby="three-tab">
+                      <h5 class="card-title">Vulnerability info</h5>
+                      <p class="card-text text-center">This is a list of the vulnerabilities found on your device, Listed by Title and Description Provided by<a href="https://www.vulners.com" target="_blank"> Vulners.com</a></p>
+                      <div id="miti" style="margin-left:auto; margin-right:auto; width:960px; height: 600px; overflow-y: scroll;">
+                        <p class="card-text text-center overflow-auto" style="margin: 30px 0px;">
+                          Please Check out the <a class="nav-link" id="two-tab" data-toggle="tab" href="#two"  aria-controls="Two" aria-selected="false">Device scan</a> to scan youre devices for vulnerabilities
+                        </p>
+                      </div></p>
+          
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container" style="text-align: center;">
+        <p>Please note that this program is not meant to replace anti-virus software<br> Powered by <a href="https://vulners.com" target="_blank">Vulners</a></a></p>
+      </div>
+    </div>
+
+
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JS Files -->
+  <script src="assets/lib/jquery/jquery.min.js"></script>
+  <script src="assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="assets/lib/aos/aos.js"></script>
+  <script src= "eel.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  
+  <script>
+    function thegreatone(name, ip, data){
+      const tablebody = document.getElementById('tableData')
+      tableHtml = `<tr><td>${ip}</td><td>${name}</td></tr>`
+      portHtml = `<option class="dropdown-item" value="${ip}">${name}</option>`
+      $('#device-selector').append(portHtml)
+      $(tablebody).append(tableHtml)
+      clearfield('Titletab1')
+      $('#Titletab1').append('Showing Network Map')
+      clearfield('Desctab1')
+      $('#Desctab1').append('Please note that the program might not be able to detect phones on the network')
+      portselect(data)
+      return ip, name
+
+    function portselect (data){
+      deviceInfo = data  
+      $('#device-selector').on('change', function(element) {
+      clearfield('port-selector')
+      portdefault = '<option class="dropdown-item" type="button" value="all" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="all">Select Port(Optional)</option>'
+      $('#port-selector').append(portdefault)
+      chosenDevice = this.value;
+      for (portIndex in deviceInfo['scan'][chosenDevice]['tcp']) {
+           port_option = `<option value="${portIndex}">${portIndex}<option>` 
+          $('#port-selector').append(port_option)
+      }
+    })
+      $('#port-selector').on('change', function(){
+        chosenPort= this.value;
+      })
+        }
+    }
+    
+  function Scanresult(cve, port, url) {
+    leng = cve.length
+    clearfield('result')
+    result = document.getElementById('result')
+    if(cve == "" && port == "" && url == ""){
+          appendtest = '<p>No vulnerabilities found on your device!</p>'
+          clearfield('result')
+          $(result).append(appendtest)
+        }
+        else{
+        vulnermessage = `<p>Some vulnerabilities were found on your device, please check out the Informations tab to learn more about them.</p>`
+        $(result).append(vulnermessage)
+        }
+    for(let y = 0; y < leng;y++){
+          x = document.getElementById(`(${port[y]})`)
+          appendtest = `<p style="text-align:left!important;"><b>Port ${port[y]}</b></p>`
+          resedit = `<div id="(${port[y]})" style=" margin-right:auto; width:280px; height: 90px; overflow-y: scroll;"></div>`
+          if (x != null){
+            x = document.getElementById(`(${port[y]})`)
+            resappend= `<p><a href="${url[y]}" target="_blank">${cve[y]}</a></p>`
+            $(x).append(resappend)
+          }
+          else {
+            
+            $(result).append(appendtest)
+            $(result).append(resedit)
+            x = document.getElementById(`(${port[y]})`)
+            resappend= `<p><a href="${url[y]}" target="_blank">CVE ID: ${cve[y]}</a></p>`
+            $(x).append(resappend)
+           }
+
+
+      
+    }
+      
+    }
+  function clearfield(id){
+    result = document.getElementById(id)
+    $(result).empty()
+  }
+
+  
+  function clearfields(){
+   
+    clearfield('result')
+    clearfield('#port-selector')
+    clearfield('#device-selector')
+    devedit = '<option class="dropdown-item" value="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Device</option>'
+   // $('#device-selector').append(devedit)
+    clearfield('tableData')
+    scanedit = '<p class="card-text text-center overflow-auto" style="margin: 30px 0px;">This area will be used to display the results of your scan. Please Choose the Device and Preferred Port(Optional) and Click the button at the bottom of the Page. Please Note this scan may take up to 5 minutes</p>'
+    $("#result").append(scanedit)
+  }
+  var r = 0;
+  function Results(Title, Description, cve, url){
+    
+    divedit = `<div id= ${r} style="margin-right:auto; width:800px; height: 190px; overflow-y: scroll; text-align:left!important; font-size: 0.8rem" ></div>`
+    mitiedit = `<p style="text-align: left!important;"><br><b><a href="${url[r]}" target="_blank">[${cve}]</a>${Title}</b><br><br>${Description}<br><br></p>`
+    $('#miti').append(mitiedit)
+    r++;
+
+    
+
+    //$('#miti').append(Solution)
+  }
+  function Pleasewait1(){
+    clearfield('Titletab1')
+    $('#Titletab1').append('Please wait while your network is being scanned')
+  }
+  function Pleasewait2(){
+    clearfield('result')
+    $("#result").append('Please wait while your device is being scanned')
+  }
+  eel.expose(thegreatone)
+  eel.expose(Scanresult)
+  eel.expose(Results)
+  </script>
+
+
+</body>
+
+</html>
